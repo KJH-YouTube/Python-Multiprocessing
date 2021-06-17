@@ -2,15 +2,21 @@ from multiprocessing import Process, Queue
 import sys, time
 
 class WrongAttributeException(Exception):
-    #When the program is given a wrong command input
+    # When the program is given a wrong command input
     pass
 
+
+## This function was defined to handle the case
+## that the input command is single.
 def work1(num):
     summation = 0
     for i in range(1, num+1):
         summation += i
     return summation
 
+
+## This function was defined to handle the case
+## that the input command is multi.
 def work2(id, queue, start, end):
     mid = 0
     for i in range(start+1, end+1):
@@ -18,19 +24,31 @@ def work2(id, queue, start, end):
     queue.put(mid)
     return
 
+
+## This Section was defined for main function
 def main(args):
-    if len(args) != 3: # ["multi2.py", "single", "1000000"] (for example)
-        raise WrongAttributeException("Given 1 more arguments. Expected is 1 argument.")
+    # The number of input command elements always
+    # should be 3.
+    if len(args) > 3: # ["multi2.py", "single", "1000000"] (for example)
+        raise WrongAttributeException("Given 2 more arguments. Expected is 2 arguments.")
+    
+    # For Single Processing
     elif args[1].lower() == "single":
         _TIME1 = time.time()
         result = work1(int(args[2]))
         _TIME2 = time.time()
         return result, _TIME2 - _TIME1
+    
+    # For Multi Processing
     elif args[1].lower() == "multi":
         queue = Queue()
         tasks = []
         num = int(args[2])
 
+        # If input number is under 8,
+        # then it needs not to use multiprocessing
+        # Actually, this number doesn't have to be 8
+        # You can choose a number you want.
         if num < 8:
             _TIME1 = time.time()
             result = work1(int(args[2]))
@@ -48,9 +66,11 @@ def main(args):
         for task in tasks:
             task.join()
 
+        # To imprint the end sign at last cell
         queue.put("END")
         result = 0
-        # 
+        
+        # Join the results computed by the threads
         while True:
             mid = queue.get()
             if mid == "END":
@@ -59,7 +79,8 @@ def main(args):
             result += mid
     
     else:
-        raise WrongAttributeException(f"Not Listed option - {args[1]}")
+        ## If the command elements are lacked
+        raise WrongAttributeException(f"Not Listed option")
 
 if __name__ == '__main__':
     args = sys.argv
