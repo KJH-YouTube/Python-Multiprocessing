@@ -17,5 +17,13 @@ The given files compute the summation of from one to `N`, an input command param
 If following this command form, you can execute the computations on your desktop or laptop. 
 
 ```
+~$ python3 multi.py multi 1000
+```
 
+## Result
+
+If executing the given `multi.py` file with the above command, you can see results of the following example.
+
+```
+SUM of 0 ~ 1000 : 500500 in 0.06587 sec
 ```
