@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This python-multiprocessing folder includes a basic grammar form for multiprocessing on a thread unit and some example files for it. A basic form, however, does not include `shared_memory` concept. For this, I will handle the method next time (when I can do that). If there is a folder with title ***Multiprocessing_2***. The included python files could be excuted by some commands. The execution command examples belong to `Execution` Section. 
+This python-multiprocessing folder includes a basic syntax form for multiprocessing on a thread unit and some example files for it. A basic form, however, does not include `shared_memory` concept. For this, I will handle the method next time (when I can do that). If there is a folder with title ***Multiprocessing_2***. The included python files could be excuted by some commands. The execution command examples belong to `Execution` Section. 
 
 ## Purpose
 
