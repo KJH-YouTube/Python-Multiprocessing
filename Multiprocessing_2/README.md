@@ -10,15 +10,15 @@
 
 ## Introduction
 
-This python-multiprocessing folder includes contents this github project's `purpose` and main themes of second multiprocessing lecture (on YouTube). This section is being dealing with important concepts of parallel computing in the computer science field. Involving `thread`, `process`, `processor`, `process pool`, `daemon`,`asynchronization`, `synchronization`, `lock`, `GIL`, and `shared memory`, this project will enhance user experiences for parallel computing and multiprocessing. In this folder, many files have each different and independent commands. Thus, it is recommended to check execution commands section at least once.
+This python-multiprocessing folder includes contents of this GitHub project's `purpose` and the main themes of the second multiprocessing lecture (on YouTube). This section deals with important concepts of parallel computing in the computer science field. Involving `thread`, `process`, `processor`, `process pool`, `daemon`, `asynchronization`, `synchronization`, `lock`, `GIL`, and `shared memory`, this project will enhance user experiences for parallel computing and multiprocessing. In this folder, many files have different and independent commands. Thus, it is recommended to check the execution commands section at least once.
 
 ## Purpose
 
-For this program and video, I wanted those who want to study python multiprocessing (threading) to learn this topic and programming skills with more efficient methods. Actually, although there are many directions and methods to implement multiprocessing program with python multiprocessing built-in module, some applications and methods which are revealed by public were sometimes not good and efficient. Thus, I wanted to provide people with more efficient structures of multiprocessing programming code design in python.
+For this program and video, I wanted those who want to study Python multiprocessing (threading) to learn this topic and programming skills with more efficient methods. Actually, although there are many directions and methods to implement multiprocessing program with python multiprocessing built-in module, some applications and methods which are revealed by public were sometimes not good and efficient. Thus, I wanted to provide people with more efficient structures of multiprocessing programming code design in Python.
 
 ## Description
 
-Like every studying and lecture, my project also cannot include all contents, which are implemented in CPython. What my repository covers is the methods and modules that I frequently have utilized in my research. I tried to include the core functionalities of python multiprocessing to maintain and utilize them at the easiest direction. The following table states main contents of the given files in this folder.
+Like every studying and lecture, my project also cannot include all contents, which are implemented in CPython. What my repository covers is the methods and modules that I frequently have utilized in my research. I tried to include the core functionalities of Python multiprocessing to maintain and utilize them in the easiest direction. The following table states the main contents of the given files in this folder.
 
 
 | Filename               | Main content                                                                                   |
