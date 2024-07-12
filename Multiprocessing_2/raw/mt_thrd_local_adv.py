@@ -57,6 +57,7 @@ def work4(id, result, start, end):
     print(f'{os.getpid()}: {result}')
     return
 
+
 ## This Section was defined for main function
 def main(args):
     """
@@ -78,7 +79,7 @@ def main(args):
     due to wrong command options
     """
     
-    log_cpu_pid(p_sec='Parent-process', c_sec='CPU Core ID')
+    print(f'Parent-process: {os.getpid()}')
 
     # The number of input command elements always
     # should be 2.
@@ -104,7 +105,6 @@ def main(args):
 
         # Here, local is required
         local = thrd.local()
-        
         
         if False:
             """
@@ -140,9 +140,9 @@ def main(args):
                 for work3 & work4 function
             """
 
-            local.result = ctypes.c_int(0) # (Work3) For reference to object
-            #local.result = 0              # (in Work3&4) Exception!: just copy (it should be handled by a ctype value)
+            """ Here, initialization is required! """
             for i in range(p_num):
+                """ Here, functions are required! """
                 th = thrd.Thread(target=work3, args = (i, local.result, (num*i)//8, (num*(i+1))//8 ))
                 # How about args = (i, local, ...) ? Exceptional?
                 tasks.append(th)

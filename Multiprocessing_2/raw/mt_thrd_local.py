@@ -54,7 +54,7 @@ def work2(id, result, start, end):
     return None
     """
     mid = 0
-    log_cpu_pid(p_sec='Sub-process', c_sec='CPU Core ID')
+    print(os.getpid()) # to check pid
     for i in range(start+1, end+1):
         mid += i
     result.append(mid)
@@ -82,7 +82,7 @@ def main(args):
     due to wrong command options
     """
     
-    print(f'Parent-process: {os.getpid()}')
+    log_cpu_pid(p_sec='Parent-process', c_sec='CPU Core ID')
 
     # The number of input command elements always
     # should be 2.
@@ -105,15 +105,13 @@ def main(args):
         
         _TIME1 = time.time()
 
-        # Here, local is required
-        local = thrd.local()    # Main thread local memory region.
-        local.result = []       # 'result' is stored as an element of dict of local
+        """Here, local is required"""
+        
 
 
         for i in range(8):
-            th = thrd.Thread(target=work2, args = (i, local.result, (num*i)//8, (num*(i+1))//8 ))
-            # 100000
-            # 0~12500, 12500 ~ 25000, ...
+            """Here, Thread function for local to be applied is required"""
+            
             tasks.append(th)
             th.start()
 
@@ -123,8 +121,8 @@ def main(args):
         
 
         result = 0                  # Assemble final results
-        for n in local.result:
-            result += n
+        """Here, how to assemble final results?"""
+        
         
         _TIME2 = time.time()
 

@@ -1,7 +1,7 @@
 """
 * This file articulates the method to unlimit the waiting functionality, as known as .join().
 * Commands for this file follows `~$ python3 <filename>`
-* e.g. python3 mp_daemon.py
+* e.g. python3 mp_pool.py
 
 * This file includes how to utilize Process.daemon and extra methods for multiprocessing.Process.
 
@@ -62,6 +62,7 @@ def work3(id):
     ------
     None
     """
+    psp = psutil.Process()
     log_cpu_pid(p_sec='Sub-process', c_sec='CPU Core ID')
     time.sleep(5)
     return
@@ -113,8 +114,9 @@ def main(args):
     due to wrong numbers of command arguments
     due to wrong command options
     """
+    
     # The number of input command elements always
-    # should be 2.
+    # should be 1.
     if len(args) > 1: # ["mp_daemon.py"] (for example)
         raise WrongAttributeException("Too many arguments")
     
@@ -129,23 +131,17 @@ def main(args):
         _TIME1 = time.time()    # Time Measurement
         for i in range(p_num):
             # With work2 func
-            #thrd = Process(target=work2, args = (i, queue, (cnt*i)//p_num, (cnt*(i+1))//p_num))
+            thrd = Process(target=work2, args = (i, queue, (cnt*i)//p_num, (cnt*(i+1))//p_num))
             # With work3 func
-            thrd = Process(target=work3, args = (i,))
+            #thrd = Process(target=work3, args = (i,))
             # [CAUTION]
             # daemon should be stated before the thread starts.
-            thrd.daemon = True  # it means the thread would be operated in background
-            tasks.append(thrd)
-            thrd.start()
+            """Here, daemon is required"""
 
-        load_proc = Process(target=load)
-        load_proc.daemon = True
-        load_proc.start()
-
+        """Here, daemon is required"""
 
         #for task in tasks:
         #    task.join()
-
 
         # Actually, this block functions .join().
         # Then, why is the daemon used?
@@ -160,10 +156,7 @@ def main(args):
             # do something if you need
         _TIME2 = time.time()    # Time Measurement
 
-        load_proc.terminate()   # Terminate a process
-        load_proc.join()        # Wait until the process is completely terminated
-        # ~~~~~~~~^^^^^^ why is it required?
-        load_proc.close()       # Free the object resource
+        """Here, how to finish?"""
 
 
         # Depending on function

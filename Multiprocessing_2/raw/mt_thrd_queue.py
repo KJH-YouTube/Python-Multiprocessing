@@ -13,6 +13,7 @@ import sys, time
 
 from utils import log_cpu_pid
 
+
 class WrongAttributeException(Exception):
     # When the program is given a wrong command input
     pass
@@ -32,7 +33,6 @@ def work1(num):
     ------
     return an `int` result from 1 to `num`
     """
-    
     summation = 0
     for i in range(1, num+1):
         summation += i
@@ -56,7 +56,6 @@ def work2(id, result, start, end):
     ------
     return None
     """
-    
     log_cpu_pid(p_sec='Sub-process', c_sec='CPU Core ID')
     mid = 0
     for i in range(start+1, end+1):
@@ -85,6 +84,7 @@ def main(args):
     due to wrong numbers of command arguments
     due to wrong command options
     """
+    
     
     # The number of input command elements always
     # should be 3.

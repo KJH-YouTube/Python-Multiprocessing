@@ -7,7 +7,6 @@
 """
 
 import multiprocessing as mp
-import os
 
 from utils import log_cpu_pid
 
@@ -48,6 +47,7 @@ def main():
     # typecode_or_type   : implemented in sharedctypes.py
     # size_or_initializer: 
     
+    """ Here, Initialization is required """
     shared_arr = mp.Array('i', list(range(10)), lock=True)            #typecode
     shared_str = mp.Array('c', b'Hello, World') # bytearray only & bytearray can have two attributes: value and raw
 
@@ -74,8 +74,7 @@ def main():
                 procs.remove(proc)  # remove process from tasks list
             # do something
     print(f'Final Array in shared memory: {[ v for v in shared_arr ]}')
-    print(f'Final Array in shared memory: {[ v for v in shared_str ]}')
-
+    print(shared_str.value)
 
 #
 # main test

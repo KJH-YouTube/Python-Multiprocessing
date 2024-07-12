@@ -17,7 +17,6 @@ import os, time
 
 from utils import log_cpu_pid
 
-
 def work(x):
     """
     The work function to calculate a square number at each process.
@@ -32,6 +31,7 @@ def work(x):
     """
     
     log_cpu_pid(p_sec='Sub-process', c_sec='CPU Core ID')
+    # use this to visualize
     time.sleep(2)
     return x*x
 
@@ -62,7 +62,8 @@ def main():
             If one given function could take many types, then argument could be '[int, str]'.
         """
         with p: # "with Pool(5) as p" also allowed
-            res = p.map(work, range(8)) # The argument is longer than the pool size
+            """Here, pool.map is required"""
+            pass
             # return function's return value
             # args should be iterable
 
@@ -79,11 +80,12 @@ def main():
             res = []
             a = None
             for i in range(8):
-                a = p.apply(work, (i, ))     # return function's return value
-                res.append(a)                # args should be iterable
+                """Here, pool.apply is required"""
+                
     
     # Then, when we need this?
     # Actually, you wouldn't face frequently cases, which use the apply() method.
+
 
     print(res)
     return

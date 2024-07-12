@@ -1,16 +1,18 @@
 """
 [Please ReadMe]
-- Method 1 or Method 2 is recommended.
-- They are more efficient on the viewsight of 'spatial locality'.
-- Plus, more efficient for memory management.
-- But method 3 is also needed when a program requires multiple lock groups.
+* Method 1 or Method 2 is recommended.
+* They are more efficient on the viewsight of 'spatial locality'.
+* Plus, more efficient for memory management.
+* But method 3 is also needed when a program requires multiple lock groups.
 """
+
 
 import multiprocessing as mp
 import time, os
 import ctypes
 
 from utils import log_cpu_pid
+
 
 ## Method 1
 ## Lock of the Variable Itself
@@ -27,6 +29,7 @@ def work1(sv, cnt):
     ------
     None
     """
+    
     #print(os.getpid()) # to check pid
     for _ in range(cnt):
         sv.acquire()
@@ -49,6 +52,7 @@ def work2(sv, cnt):
     ------
     None
     """
+    
     #print(os.getpid()) # to check pid
     for _ in range(cnt):
         with sv.get_lock(): 
@@ -74,6 +78,7 @@ def work3(sv, cnt, lock):
     ------
     None
     """
+    
     #print(os.getpid()) # to check pid
     for _ in range(cnt):
         lock.acquire()
@@ -93,6 +98,7 @@ def main():
     ------
     None
     """
+    
     # Data Initialization for Shared Memory
     # multiprocessing.Value(typecode_or_type, *args, lock=True)
     # typecode_or_type: implemented in sharedctypes.py
@@ -115,6 +121,7 @@ def main():
         p.daemon = True
         p.start()
  
+    # just join() method
     while len(procs) != 0:
         for proc in procs:
             if not proc.is_alive(): # check processes' end

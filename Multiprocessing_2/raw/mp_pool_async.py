@@ -1,5 +1,5 @@
 """
-* This file articulate the method to unlimit the waiting functionality, as known as .join().
+* This file articulates the method to unlimit the waiting functionality, as known as .join().
 * Commands for this file follows `~$ python3 <filename>`
 * e.g. python3 mp_pool.py
 
@@ -79,9 +79,8 @@ def main():
             """
                 Process.Pool.map Format
             """
-            res = p.map_async(work, range(8))  # The argument is longer than the pool size
-            # return function's return value
-            # args should be iterable
+            
+            """Here, implementation is required """
 
         if False:
             """
@@ -91,10 +90,8 @@ def main():
                 It is not better suited for performing work in parallel.
             """
             
-            res = []
-            for i in range(8):
-                res.append(p.apply_async(work, (i, )))
-            
+            """Here, implementation is required """
+
 
         # [CAUTION]
         # If you implement your code out of 'with'
@@ -122,7 +119,7 @@ def main():
         if type(res) != list:
             print(f'\n{res.get(timeout=0)}') # list does not have .ready method
         else:
-            print(f'\n{[val.get() for val in res]}')   
+            print(f'\n{[val.get(timeout=0) for val in res]}')   
     
     return
 
